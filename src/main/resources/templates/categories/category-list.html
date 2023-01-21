@@ -31,8 +31,8 @@
                 </thead>
                 <tbody>
                     <tr th:each="category: ${categories}">
-                        <td th:text="${categories.id}"></td>
-                        <td th:text="${categories.name}"></td>
+                        <td th:text="${category.id}"></td>
+                        <td th:text="${category.name}"></td>
                     </tr>
                 </tbody>
             </table>
