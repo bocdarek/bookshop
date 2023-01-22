@@ -15,26 +15,27 @@
 
     <body>
     <header>
-
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
     </header>
 
     <main>
-        <div class="container mt-2">
+        <div class="container mt-5 col-4">
 
             <h2>Category</h2>
             <hr/>
 
-            <div class="row">
-                    <form th:action="@{/categories/saveCategory}" th:object="${category}" method="POST">
-                        <div class="col-4">
+                <form th:action="@{/categories/saveCategory}" th:object="${category}" method="POST">
+                    <div class="row">
+                        <div class="col-6">
                             <input type="text" th:field="*{name}" class="form-control mb-4" placeholder="Enter Name" />
                         </div>
-                        <div class="col-2">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                        <input type="hidden" th:field="*{id}" />
-                    </form>
-            </div>
+                    </div>
+                    <div class="row px-3">
+                        <button type="submit" class="col-2 btn btn-primary">Save</button>
+                    </div>
+                    <input type="hidden" th:field="*{id}" />
+
+                </form>
 
             <hr/>
             <a th:href="@{/categories}">Back to categories</a>
@@ -46,6 +47,7 @@
 
     </footer>
 
+    <script src="https://kit.fontawesome.com/5f637348e4.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
             integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
