@@ -38,18 +38,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="product: ${products}">
+                        <tr th:each="productDTO: ${productsDTO}">
 
-                            <td th:text="${product.id}" class="text-center col-1"></td>
-                            <td th:text="${product.title}" class="col-4"></td>
-                            <td th:text="${product.author}" class="col-3"></td>
-                            <td th:text="${product.quantity}" class="text-center col-1"></td>
-                            <td th:text="${product.price}" class="text-center col-1"></td>
+                            <td th:text="${productDTO.id}" class="text-center col-1"></td>
+                            <td th:text="${productDTO.title}" class="col-4"></td>
+                            <td th:text="${productDTO.author}" class="col-3"></td>
+                            <td th:text="${productDTO.quantity}" class="text-center col-1"></td>
+                            <td th:text="${productDTO.price}" class="text-center col-1"></td>
 
                             <td class="text-center col-2">
-                                <a th:href="@{/products/showUpdateForm(id=${product.id})}"
+                                <a th:href="@{/products/showUpdateForm(id=${productDTO.id})}"
                                    class="btn btn-info">Update</a>
-                                <a th:href="@{/products/deleteProduct(id=${product.id})}"
+                                <a th:href="@{/products/deleteProduct(id=${productDTO.id})}"
                                    class="btn btn-danger ms-2">Delete</a>
                             </td>
                         </tr>

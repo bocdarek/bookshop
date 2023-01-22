@@ -24,7 +24,7 @@
             <h2>Category</h2>
             <hr/>
 
-                <form th:action="@{/categories/saveCategory}" th:object="${category}" method="POST">
+                <form th:action="@{/categories/saveCategory}" th:object="${categoryDTO}" method="POST">
                     <div class="row">
                         <div class="col-8">
                             <label for="categoryName" class="form-label">Name</label>

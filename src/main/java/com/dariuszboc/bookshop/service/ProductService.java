@@ -8,6 +8,7 @@ import com.dariuszboc.bookshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,8 +23,15 @@ public class ProductService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public List<ProductDTO> findAll() {
+        List<Product> products = productRepository.findAll();
+        List<ProductDTO> productsDTO = new ArrayList<>();
+        products.forEach(product -> {
+            Long id = product.getId();
+            ProductDTO productDTO = this.findById(id);
+            productsDTO.add(productDTO);
+        });
+        return productsDTO;
     }
 
     public void save(ProductDTO productDTO) {

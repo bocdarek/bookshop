@@ -1,7 +1,8 @@
 package com.dariuszboc.bookshop.controller;
 
+import com.dariuszboc.bookshop.DTO.CategoryDTO;
 import com.dariuszboc.bookshop.entity.Category;
-import com.dariuszboc.bookshop.repository.CategoryRepository;
+import com.dariuszboc.bookshop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,43 +13,43 @@ import java.util.List;
 @Controller
 public class CategoryController {
 
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
     @Autowired
-    public CategoryController(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/categories")
     public String categoryList(Model model) {
-        List<Category> categories = categoryRepository.findAll();
+        List<Category> categories = categoryService.findAll();
         model.addAttribute("categories", categories);
         return "categories/category-list";
     }
 
     @GetMapping("/categories/addCategoryForm")
     public String addCategoryForm(Model model) {
-        Category category = new Category();
-        model.addAttribute("category", category);
+        CategoryDTO categoryDTO = new CategoryDTO();
+        model.addAttribute("categoryDTO", categoryDTO);
         return "categories/add-category-form";
     }
 
     @PostMapping("/categories/saveCategory")
-    public String saveCategory(@ModelAttribute Category category) {
-        categoryRepository.save(category);
+    public String saveCategory(@ModelAttribute CategoryDTO categoryDTO) {
+        categoryService.save(categoryDTO);
         return "redirect:/categories";
     }
 
     @GetMapping("/categories/showUpdateForm")
     public String showUpdateForm(@RequestParam Long id, Model model) {
-        Category category = categoryRepository.findById(id).get();
-        model.addAttribute("category", category);
+        CategoryDTO categoryDTO = categoryService.findById(id);
+        model.addAttribute("categoryDTO", categoryDTO);
         return "categories/add-category-form";
     }
 
     @GetMapping("/categories/deleteCategory")
     public String deleteCategory(@RequestParam Long id) {
-        categoryRepository.deleteById(id);
+        categoryService.deleteById(id);
         return "redirect:/categories";
     }
 }

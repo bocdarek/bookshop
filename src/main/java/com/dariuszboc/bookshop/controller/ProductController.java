@@ -26,21 +26,21 @@ public class ProductController {
 
     @GetMapping("/products")
     public String productList(Model model) {
-        List<Product> products = productService.findAll();
-        model.addAttribute("products", products);
+        List<ProductDTO> productsDTO = productService.findAll();
+        model.addAttribute("productsDTO", productsDTO);
         return "products/product-list";
     }
 
     @GetMapping("/products/addProductForm")
     public String addProductForm(Model model) {
-        ProductDTO product = new ProductDTO();
-        model.addAttribute("product", product);
+        ProductDTO productDTO = new ProductDTO();
+        model.addAttribute("productDTO", productDTO);
         return "products/add-product-form";
     }
 
     @PostMapping("/products/saveProduct")
-    public String saveProduct(@ModelAttribute ProductDTO product) {
-        productService.save(product);
+    public String saveProduct(@ModelAttribute ProductDTO productDTO) {
+        productService.save(productDTO);
         return "redirect:/products";
     }
 
