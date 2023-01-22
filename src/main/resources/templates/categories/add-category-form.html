@@ -19,19 +19,21 @@
     </header>
 
     <main>
-        <div class="container mt-5 col-4">
+        <div class="container mt-3 col-3">
 
             <h2>Category</h2>
             <hr/>
 
                 <form th:action="@{/categories/saveCategory}" th:object="${category}" method="POST">
                     <div class="row">
-                        <div class="col-6">
-                            <input type="text" th:field="*{name}" class="form-control mb-4" placeholder="Enter Name" />
+                        <div class="col-8">
+                            <label for="categoryName" class="form-label">Name</label>
+                            <input type="text" th:field="*{name}" class="form-control mb-4"
+                                   placeholder="Enter Name" id="categoryName"/>
                         </div>
                     </div>
                     <div class="row px-3">
-                        <button type="submit" class="col-2 btn btn-primary">Save</button>
+                        <button type="submit" class="col-3 btn btn-primary">Save</button>
                     </div>
                     <input type="hidden" th:field="*{id}" />
 
