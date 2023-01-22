@@ -1,4 +1,4 @@
-package com.dariuszboc.bookshop.entity;
+package com.dariuszboc.bookshop.DTO;
 
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;

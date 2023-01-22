@@ -47,7 +47,7 @@
                             <td th:text="${product.price}" class="text-center col-1"></td>
 
                             <td class="text-center col-2">
-                                <a th:href="@{/products/productUpdateForm(id=${product.id})}"
+                                <a th:href="@{/products/showUpdateForm(id=${product.id})}"
                                    class="btn btn-info">Update</a>
                                 <a th:href="@{/products/deleteProduct(id=${product.id})}"
                                    class="btn btn-danger ms-2">Delete</a>

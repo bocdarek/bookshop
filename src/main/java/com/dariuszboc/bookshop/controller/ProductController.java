@@ -1,7 +1,7 @@
 package com.dariuszboc.bookshop.controller;
 
 import com.dariuszboc.bookshop.entity.Product;
-import com.dariuszboc.bookshop.entity.ProductDTO;
+import com.dariuszboc.bookshop.DTO.ProductDTO;
 import com.dariuszboc.bookshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,8 +46,8 @@ public class ProductController {
 
     @GetMapping("/products/showUpdateForm")
     public String showUpdateForm(@RequestParam Long id, Model model) {
-        Product product = productService.findById(id);
-        model.addAttribute("product", product);
+        ProductDTO productDTO = productService.findById(id);
+        model.addAttribute("productDTO", productDTO);
         return "products/add-product-form";
     }
 

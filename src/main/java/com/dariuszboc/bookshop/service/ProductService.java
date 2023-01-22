@@ -2,7 +2,7 @@ package com.dariuszboc.bookshop.service;
 
 import com.dariuszboc.bookshop.entity.Category;
 import com.dariuszboc.bookshop.entity.Product;
-import com.dariuszboc.bookshop.entity.ProductDTO;
+import com.dariuszboc.bookshop.DTO.ProductDTO;
 import com.dariuszboc.bookshop.repository.CategoryRepository;
 import com.dariuszboc.bookshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +40,19 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public Product findById(Long id) {
-        return productRepository.findById(id).get();
+    public ProductDTO findById(Long id) {
+        Product product =  productRepository.findById(id).get();
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setAuthor(product.getAuthor());
+        productDTO.setTitle(product.getTitle());
+        productDTO.setPublisher(product.getPublisher());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setYearOfRelease(product.getYearOfRelease());
+        productDTO.setPrice(product.getPrice());
+        productDTO.setQuantity(product.getQuantity());
+        productDTO.setCategoryId(product.getCategory().getId());
+        return productDTO;
     }
 
     public void deleteById(Long id) {
