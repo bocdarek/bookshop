@@ -62,10 +62,16 @@ html,body {
 
 
 .sidebar-title {
-
+    color: var(--secondColor);
 }
 
 .sidebar-element {
+    list-style: none;
+}
 
+.my-link {
+    color: inherit;
+    text-decoration: inherit;
+    font-size: x-large;
 }
 

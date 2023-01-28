@@ -1,9 +1,7 @@
 package com.dariuszboc.bookshop.service;
 
 import com.dariuszboc.bookshop.DTO.CategoryDTO;
-import com.dariuszboc.bookshop.DTO.ProductDTO;
 import com.dariuszboc.bookshop.entity.Category;
-import com.dariuszboc.bookshop.entity.Product;
 import com.dariuszboc.bookshop.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,10 +47,6 @@ public class CategoryService {
 
     public void deleteById(Long id) {
         categoryRepository.deleteById(id);
-    }
-
-    public List<Category> findByName(String name) {
-        return categoryRepository.findByName(name);
     }
 
 }

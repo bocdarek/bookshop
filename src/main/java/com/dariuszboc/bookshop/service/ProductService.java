@@ -1,5 +1,6 @@
 package com.dariuszboc.bookshop.service;
 
+import com.dariuszboc.bookshop.DTO.CategoryDTO;
 import com.dariuszboc.bookshop.entity.Category;
 import com.dariuszboc.bookshop.entity.Product;
 import com.dariuszboc.bookshop.DTO.ProductDTO;
@@ -25,13 +26,7 @@ public class ProductService {
 
     public List<ProductDTO> findAll() {
         List<Product> products = productRepository.findAll();
-        List<ProductDTO> productsDTO = new ArrayList<>();
-        products.forEach(product -> {
-            Long id = product.getId();
-            ProductDTO productDTO = this.findById(id);
-            productsDTO.add(productDTO);
-        });
-        return productsDTO;
+        return getDtoListFromProductList(products);
     }
 
     public void save(ProductDTO productDTO) {
@@ -67,5 +62,21 @@ public class ProductService {
 
     public void deleteById(Long id) {
         productRepository.deleteById(id);
+    }
+
+    public List<ProductDTO> findByCategory(CategoryDTO categoryDTO) {
+        Category category = categoryRepository.findById(categoryDTO.getId()).get();
+        List<Product> products = productRepository.findByCategory(category);
+        return getDtoListFromProductList(products);
+    }
+
+    private List<ProductDTO> getDtoListFromProductList(List<Product> products) {
+        List<ProductDTO> productsDTO = new ArrayList<>();
+        products.forEach(product -> {
+            Long id = product.getId();
+            ProductDTO productDTO = this.findById(id);
+            productsDTO.add(productDTO);
+        });
+        return productsDTO;
     }
 }
