@@ -25,6 +25,7 @@ public class CategoryService {
     public void save(CategoryDTO categoryDTO) {
         Category category = new Category();
         category.setName(categoryDTO.getName());
+        category.setId(categoryDTO.getId());
         categoryRepository.save(category);
     }
 
@@ -38,6 +39,10 @@ public class CategoryService {
 
     public void deleteById(Long id) {
         categoryRepository.deleteById(id);
+    }
+
+    public List<Category> findByName(String name) {
+        return categoryRepository.findByName(name);
     }
 
 }
