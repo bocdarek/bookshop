@@ -37,13 +37,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="category: ${categories}">
-                            <td th:text="${category.id}" class="text-center col-2"></td>
-                            <td th:text="${category.name}" class="col-6"></td>
+                        <tr th:each="categoryDTO: ${categoriesDTO}">
+                            <td th:text="${categoryDTO.id}" class="text-center col-2"></td>
+                            <td th:text="${categoryDTO.name}" class="col-6"></td>
                             <td class="text-center col-4">
-                                <a th:href="@{/categories/showUpdateForm(id=${category.id})}"
+                                <a th:href="@{/categories/showUpdateForm(id=${categoryDTO.id})}"
                                    class="btn btn-info">Update</a>
-                                <a th:href="@{/categories/deleteCategory(id=${category.id})}"
+                                <a th:href="@{/categories/deleteCategory(id=${categoryDTO.id})}"
                                    class="btn btn-danger ms-2">Delete</a>
                             </td>
                         </tr>

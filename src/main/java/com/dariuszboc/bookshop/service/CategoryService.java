@@ -1,11 +1,14 @@
 package com.dariuszboc.bookshop.service;
 
 import com.dariuszboc.bookshop.DTO.CategoryDTO;
+import com.dariuszboc.bookshop.DTO.ProductDTO;
 import com.dariuszboc.bookshop.entity.Category;
+import com.dariuszboc.bookshop.entity.Product;
 import com.dariuszboc.bookshop.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,8 +21,15 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Category> findAll() {
-        return categoryRepository.findAll();
+    public List<CategoryDTO> findAll() {
+        List<Category> categories = categoryRepository.findAll();
+        List<CategoryDTO> categoriesDTO = new ArrayList<>();
+        categories.forEach(category -> {
+            Long id = category.getId();
+            CategoryDTO categoryDTO = this.findById(id);
+            categoriesDTO.add(categoryDTO);
+        });
+        return categoriesDTO;
     }
 
     public void save(CategoryDTO categoryDTO) {

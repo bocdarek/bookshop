@@ -39,11 +39,10 @@ public class ProductService {
         product.setId(productDTO.getId());
         product.setAuthor(productDTO.getAuthor());
         product.setTitle(productDTO.getTitle());
-        product.setYearOfRelease(product.getYearOfRelease());
+        product.setYearOfRelease(productDTO.getYearOfRelease());
         product.setQuantity(productDTO.getQuantity());
         product.setPrice(productDTO.getPrice());
-        Category category = categoryRepository.findById(productDTO.getCategoryId()).get();
-        product.setCategory(category);
+        product.setCategory(productDTO.getCategory());
         product.setDescription(productDTO.getDescription());
         product.setPublisher(productDTO.getPublisher());
         product.setImageURL(productDTO.getImageURL());
@@ -62,7 +61,7 @@ public class ProductService {
         productDTO.setPrice(product.getPrice());
         productDTO.setQuantity(product.getQuantity());
         productDTO.setImageURL(product.getImageURL());
-        productDTO.setCategoryId(product.getCategory().getId());
+        productDTO.setCategory(product.getCategory());
         return productDTO;
     }
 

@@ -1,5 +1,6 @@
 package com.dariuszboc.bookshop.DTO;
 
+import com.dariuszboc.bookshop.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,6 @@ public class ProductDTO {
 
     private String ImageURL;
 
-    private Long categoryId;
+    private Category category;
 
 }

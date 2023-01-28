@@ -62,12 +62,15 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <label for="productCategoryId" class="form-label">Category ID</label>
-                            <input type="text" th:field="*{categoryId}" class="form-control mb-2"
-                                   placeholder="" id="productCategoryId"/>
+                            <label for="categoryDropDownListId" class="form-label">Category</label>
+                            <select th:field="*{category}" class="form-control mb-2" id="categoryDropDownListId">
+                                <option value="0"></option>
+                                <option th:each="categoryDTO : ${categoriesDTO}"
+                                        th:value="${categoryDTO.id}"
+                                        th:text="${categoryDTO.name}"></option>
+                            </select>
                         </div>
                     </div>
-
 
                     <div class="row">
                         <div class="col-8">
@@ -110,7 +113,7 @@
                 </form>
 
             <hr/>
-            <a th:href="@{/products}">Back to categories</a>
+            <a th:href="@{/products}">Back to products</a>
 
         </div>
     </main>

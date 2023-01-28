@@ -1,7 +1,8 @@
 package com.dariuszboc.bookshop.controller;
 
-import com.dariuszboc.bookshop.entity.Product;
+import com.dariuszboc.bookshop.DTO.CategoryDTO;
 import com.dariuszboc.bookshop.DTO.ProductDTO;
+import com.dariuszboc.bookshop.service.CategoryService;
 import com.dariuszboc.bookshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,12 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/products")
@@ -34,6 +37,8 @@ public class ProductController {
     public String addProductForm(Model model) {
         ProductDTO productDTO = new ProductDTO();
         model.addAttribute("productDTO", productDTO);
+        List<CategoryDTO> categoriesDTO = categoryService.findAll();
+        model.addAttribute("categoriesDTO", categoriesDTO);
         return "products/add-product-form";
     }
 
@@ -47,6 +52,8 @@ public class ProductController {
     public String showUpdateForm(@RequestParam Long id, Model model) {
         ProductDTO productDTO = productService.findById(id);
         model.addAttribute("productDTO", productDTO);
+        List<CategoryDTO> categoriesDTO = categoryService.findAll();
+        model.addAttribute("categoriesDTO", categoriesDTO);
         return "products/add-product-form";
     }
 

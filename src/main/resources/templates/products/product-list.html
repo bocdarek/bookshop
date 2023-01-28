@@ -34,6 +34,7 @@
                             <th class="text-center">Id</th>
                             <th>Title</th>
                             <th>Author</th>
+                            <th>Category</th>
                             <th class="text-center">Quantity</th>
                             <th class="text-center">Price</th>
                             <th class="text-center">Actions</th>
@@ -43,8 +44,9 @@
                         <tr th:each="productDTO: ${productsDTO}">
 
                             <td th:text="${productDTO.id}" class="text-center col-1"></td>
-                            <td th:text="${productDTO.title}" class="col-4"></td>
-                            <td th:text="${productDTO.author}" class="col-3"></td>
+                            <td th:text="${productDTO.title}" class="col-3"></td>
+                            <td th:text="${productDTO.author}" class="col-2"></td>
+                            <td th:text="${productDTO.category.name}" class="col-2"></td>
                             <td th:text="${productDTO.quantity}" class="text-center col-1"></td>
                             <td th:text="${productDTO.price}" class="text-center col-1"></td>
 
