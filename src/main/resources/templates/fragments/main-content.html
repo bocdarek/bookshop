@@ -1,0 +1,23 @@
+<div th:fragment="main-content">
+
+  <div class="container-fluid top-container">
+
+    <div class="row align-items-start mx-auto">
+
+      <div class="col-12 my-nav"></div>
+
+      <div class="col-2 align-items-start category-list main-part">
+        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+      </div>
+
+      <div class="col-10 align-items-start product-list main-part px-5 py-3">
+        <div th:replace="~{fragments/cards :: cards}"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+</div>

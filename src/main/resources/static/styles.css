@@ -1,0 +1,71 @@
+:root {
+    --firstColor: #bbe9db;
+    --secondColor: #aeccc6;
+    --thirdColor: #9ba6a5;
+    --fourtholor: #757a79;
+    --cartColor: #e3f6ff;
+}
+
+html,body {
+    height:100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fixed-content {
+    top: 0;
+    bottom:0;
+    position:fixed;
+    overflow-x:hidden;
+}
+
+.top-container {
+    width: 80%;
+}
+
+.category-list {
+    background-color: var(--fourtholor);
+    color: var(--cartColor);
+    height: 100%;
+    padding-top: 30px;
+}
+
+.product-list {
+    background-color: var(--firstColor);
+}
+
+.main-part {
+    min-height: 500vh;
+}
+
+.my-nav {
+    height: 7vh;
+}
+
+.my-card {
+    width: 18vw;
+    height: 40vh;
+    background-color: var(--cartColor);
+}
+
+.my-card-image {
+    border-radius: 8px;
+    height: auto;
+    max-width: 30%;
+    overflow: hidden;
+
+}
+
+
+.sidebar-title {
+
+}
+
+.sidebar-element {
+
+}
+

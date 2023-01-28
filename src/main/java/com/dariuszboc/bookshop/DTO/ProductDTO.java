@@ -25,5 +25,8 @@ public class ProductDTO {
 
     private String Publisher;
 
+    private String ImageURL;
+
     private Long categoryId;
+
 }

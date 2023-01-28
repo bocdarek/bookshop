@@ -30,6 +30,8 @@ public class Product {
 
     private String Publisher;
 
+    private String imageURL;
+
     @ManyToOne
     private Category category;
 
