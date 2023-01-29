@@ -1,5 +1,6 @@
 package com.dariuszboc.bookshop.service;
 
+import com.dariuszboc.bookshop.DTO.PasswordDTO;
 import com.dariuszboc.bookshop.DTO.UserDTO;
 import com.dariuszboc.bookshop.entity.User;
 import com.dariuszboc.bookshop.repository.UserRepository;
@@ -89,6 +90,18 @@ public class UserService {
             usersDTO.add(userDTO);
         });
         return usersDTO;
+    }
+
+    public boolean processPassword(PasswordDTO passwordDTO, UserDTO userDTO) {
+//        boolean condition1 = passwordEncoder.encode(passwordDTO.getOldPassword()).equals(userDTO.getPassword());
+        boolean condition2 = passwordDTO.getNewPassword1().equals(passwordDTO.getNewPassword2());
+        if (condition2) {
+            userDTO.setPassword(passwordDTO.getNewPassword1());
+            this.saveWithNewPassword(userDTO);
+            return true;
+        }
+        return false;
+
     }
 }
 

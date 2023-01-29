@@ -1,6 +1,6 @@
 package com.dariuszboc.bookshop.controller;
 
-import com.dariuszboc.bookshop.DTO.ProductDTO;
+import com.dariuszboc.bookshop.DTO.PasswordDTO;
 import com.dariuszboc.bookshop.DTO.UserDTO;
 import com.dariuszboc.bookshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +44,26 @@ public class UserController {
         UserDTO userDTO = userService.findByUsername(name);
         model.addAttribute("userDTO", userDTO);
         return "account/my-account-data";
+    }
+
+    @GetMapping("/myAccount/changePassword")
+    public String showChangePasswordForm(Model model) {
+        PasswordDTO passwordDTO = new PasswordDTO();
+        model.addAttribute("passwordDTO", passwordDTO);
+        return "account/change-password";
+    }
+
+    @PostMapping("/myAccount/changePassword")
+    public String saveNewPassword(@ModelAttribute PasswordDTO passwordDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        UserDTO userDTO = userService.findByUsername(name);
+        boolean isValidated = userService.processPassword(passwordDTO, userDTO);
+        if (isValidated) {
+            return "redirect:/myAccount";
+        } else {
+            return "redirect:/myAccount/changePassword";
+        }
     }
 
     @GetMapping("/createAccount")
