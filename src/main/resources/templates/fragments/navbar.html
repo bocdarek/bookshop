@@ -5,12 +5,16 @@
         <span class="navbar-brand" style="font-size: xx-large">
           <i class="fa-solid fa-book pe-2"></i>Bookshop</span>
         <div class="collapse navbar-collapse ps-5" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-1 py-1 ps-5" style="font-size: x-large">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-1 py-1 ps-4" style="font-size: x-large">
             <li class="nav-item px-1">
-              <a th:href="@{/index}" class="nav-link active">Home</a>
+              <a th:href="@{/index}" class="nav-link active">
+                <i class="fa-solid fa-house-user pe-1"></i>Home</a>
             </li>
             <li class="nav-item px-1">
-              <a th:href="@{/adminPanel}" class="nav-link active">Admin Panel</a>
+              <a sec:authorize="hasRole('USER')" th:href="@{/adminPanel}" class="nav-link active">Admin Panel</a>
+            </li>
+            <li class="nav-item px-1">
+              <a sec:authorize="isAnonymous()" href="#" class="nav-link active">Create Account</a>
             </li>
             <li class="nav-item px-1">
               <a sec:authorize="isAnonymous()" th:href="@{/login}" class="nav-link active">Login</a>
@@ -19,6 +23,11 @@
               <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="nav-link active">Logout</a>
             </li>
           </ul>
+          <span class="nav-item px-1 navbar-nav" style="font-size: x-large">
+              <a sec:authorize="hasRole('USER')" href="#" class="nav-link active">
+                <i class="fa-solid fa-cart-shopping pe-1"></i>Shopping Cart</a>
+              <a sec:authorize="hasRole('USER')" href="#" class="nav-link active me-5">My Account</a>
+            </span>
         </div>
       </nav>
   </div>
