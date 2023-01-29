@@ -39,7 +39,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/categories/**").hasRole("ADMIN")
                         .requestMatchers("/products/**").hasRole("ADMIN")
+                        .requestMatchers("/users/**").hasRole("ADMIN")
+                        .requestMatchers("/orders/**").hasRole("ADMIN")
                         .requestMatchers("/adminPanel").hasRole("ADMIN")
+                        .requestMatchers("/myAccount/**").hasRole("USER")
                         .anyRequest().permitAll()
                 )
                 .formLogin(withDefaults())

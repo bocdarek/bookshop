@@ -11,10 +11,10 @@
                 <i class="fa-solid fa-house-user pe-1"></i>Home</a>
             </li>
             <li class="nav-item px-1">
-              <a sec:authorize="hasRole('USER')" th:href="@{/adminPanel}" class="nav-link active">Admin Panel</a>
+              <a sec:authorize="hasRole('ADMIN')" th:href="@{/adminPanel}" class="nav-link active">Admin Panel</a>
             </li>
             <li class="nav-item px-1">
-              <a sec:authorize="isAnonymous()" href="#" class="nav-link active">Create Account</a>
+              <a sec:authorize="isAnonymous()" th:href="@{/createAccount}" class="nav-link active">Create Account</a>
             </li>
             <li class="nav-item px-1">
               <a sec:authorize="isAnonymous()" th:href="@{/login}" class="nav-link active">Login</a>
@@ -26,7 +26,7 @@
           <span class="nav-item px-1 navbar-nav" style="font-size: x-large">
               <a sec:authorize="hasRole('USER')" href="#" class="nav-link active">
                 <i class="fa-solid fa-cart-shopping pe-1"></i>Shopping Cart</a>
-              <a sec:authorize="hasRole('USER')" href="#" class="nav-link active me-5">My Account</a>
+              <a sec:authorize="hasRole('USER')" th:href="@{/myAccount}" class="nav-link active me-5">My Account</a>
             </span>
         </div>
       </nav>
