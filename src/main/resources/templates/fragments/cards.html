@@ -1,5 +1,5 @@
 
-<div th:fragment="cards">
+<div th:fragment="cards" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <div class="row">
 
     <div th:each="productDTO: ${productsDTO}" class="col-4 my-4">

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Table(name="user")
 @Data
@@ -31,4 +33,10 @@ public class User {
     private String phoneNumber;
 
     private String role;
+
+    @OneToMany(mappedBy="user")
+    private Set<CartItem> cartItems;
+
+    @OneToMany(mappedBy="user")
+    private Set<Order> orders;
 }
