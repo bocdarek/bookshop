@@ -43,6 +43,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/orders/**").hasRole("ADMIN")
                         .requestMatchers("/adminPanel").hasRole("ADMIN")
                         .requestMatchers("/myAccount/**").hasRole("USER")
+                        .requestMatchers("/createAccount").anonymous()
                         .anyRequest().permitAll()
                 )
                 .formLogin(withDefaults())

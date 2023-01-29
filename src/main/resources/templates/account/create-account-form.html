@@ -21,103 +21,75 @@
   <div th:replace="~{fragments/navbar :: navbar}"></div>
 </header>
 
-<!--<main>-->
-<!--  <div class="container mt-3 col-6">-->
+<main>
+  <div class="container mt-3 col-6">
 
-<!--    <h2>Product</h2>-->
-<!--    <hr/>-->
+    <h2 sec:authorize="isAnonymous()">New Account</h2>
+    <hr/>
 
-<!--    <form th:action="@{/products/saveProduct}" th:object="${productDTO}" method="POST" id="productForm">-->
+    <form th:action="@{/saveUser}" th:object="${userDTO}" method="POST" id="userForm">
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="productTitle" class="form-label">Title</label>-->
-<!--          <input type="text" th:field="*{title}" class="form-control mb-2"-->
-<!--                 placeholder="" id="productTitle"/>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="row">
+        <div class="col-8">
+          <label for="userUsername" class="form-label">Username</label>
+          <input type="text" th:field="*{username}" class="form-control mb-2"
+                 placeholder="" id="userUsername"/>
+        </div>
+      </div>
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="productAuthor" class="form-label">Author</label>-->
-<!--          <input type="text" th:field="*{author}" class="form-control mb-2"-->
-<!--                 placeholder="" id="productAuthor"/>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="row">
+        <div class="col-8">
+          <label for="userPassword" class="form-label">Password</label>
+          <input type="text" th:field="*{password}" class="form-control mb-2"
+                 placeholder="" id="userPassword"/>
+        </div>
+      </div>
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="productYearOfRelease" class="form-label">Year Of Release</label>-->
-<!--          <input type="text" th:field="*{yearOfRelease}" class="form-control mb-2"-->
-<!--                 placeholder="" id="productYearOfRelease"/>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="row">
+        <div class="col-8">
+          <label for="userFullName" class="form-label">Full Name</label>
+          <input type="text" th:field="*{fullName}" class="form-control mb-2"
+                 placeholder="" id="userFullName"/>
+        </div>
+      </div>
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="productPublisher" class="form-label">Publisher</label>-->
-<!--          <input type="text" th:field="*{publisher}" class="form-control mb-2"-->
-<!--                 placeholder="" id="productPublisher"/>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="row">
+        <div class="col-8">
+          <label for="userAddress" class="form-label">Full address</label>
+          <textarea th:field="*{address}" class="form-control w-100 mb-2" rows="4"
+                    name="userAddress" form="userForm"
+                    placeholder="" id="userAddress"></textarea>
+        </div>
+      </div>
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="categoryDropDownListId" class="form-label">Category</label>-->
-<!--          <select th:field="*{category}" class="form-control mb-2" id="categoryDropDownListId">-->
-<!--            <option value="0"></option>-->
-<!--            <option th:each="categoryDTO : ${categoriesDTO}"-->
-<!--                    th:value="${categoryDTO.id}"-->
-<!--                    th:text="${categoryDTO.name}"></option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="row">
+        <div class="col-8">
+          <label for="userEmail" class="form-label">E-mail</label>
+          <input type="text" th:field="*{email}" class="form-control mb-2"
+                 placeholder="" id="userEmail"/>
+        </div>
+      </div>
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="productDescription" class="form-label">Description</label>-->
-<!--          <textarea th:field="*{description}" class="form-control w-100 mb-2" rows="4"-->
-<!--                    name="comment" form="productForm"-->
-<!--                    placeholder="" id="productDescription"></textarea>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="row">
+        <div class="col-8">
+          <label for="userPhoneNumber" class="form-label">Phone Number</label>
+          <input type="text" th:field="*{phoneNumber}" class="form-control mb-2"
+                 placeholder="" id="userPhoneNumber"/>
+        </div>
+      </div>
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="imageURL" class="form-label">Image URL</label>-->
-<!--          <input type="text" th:field="*{imageURL}" class="form-control mb-2"-->
-<!--                 placeholder="" id="imageURL"/>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="row px-3">
+        <button type="submit" class="col-2 btn btn-primary">Save</button>
+      </div>
+      <input type="hidden" th:field="*{id}" />
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="productQuantity" class="form-label">Quantity</label>-->
-<!--          <input type="text" th:field="*{quantity}" class="form-control mb-2"-->
-<!--                 placeholder="" id="productQuantity"/>-->
-<!--        </div>-->
-<!--      </div>-->
+    </form>
 
-<!--      <div class="row">-->
-<!--        <div class="col-8">-->
-<!--          <label for="productPrice" class="form-label">Price</label>-->
-<!--          <input type="text" th:field="*{price}" class="form-control mb-4"-->
-<!--                 placeholder="" id="productPrice"/>-->
-<!--        </div>-->
-<!--      </div>-->
+    <hr/>
+    <a th:href="@{/}">Back to Home</a>
 
-<!--      <div class="row px-3">-->
-<!--        <button type="submit" class="col-2 btn btn-primary">Save</button>-->
-<!--      </div>-->
-<!--      <input type="hidden" th:field="*{id}" />-->
-
-<!--    </form>-->
-
-<!--    <hr/>-->
-<!--    <a th:href="@{/products}">Back to products</a>-->
-
-<!--  </div>-->
-<!--</main>-->
+  </div>
+</main>
 
 <footer>
 
