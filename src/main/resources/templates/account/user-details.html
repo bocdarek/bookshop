@@ -27,24 +27,24 @@
 
   <div class="container mt-3 col-6">
 
-    <h2 sec:authorize="isAnonymous()">New Account</h2>
+    <h2>User Information</h2>
     <hr/>
 
-    <form th:action="@{/saveUser}" th:object="${userDTO}" method="POST" id="userForm">
+    <form th:action="@{/users}" th:object="${userDTO}" method="GET" id="userForm">
 
       <div class="row">
         <div class="col-8">
-          <label for="userUsername" class="form-label">Username</label>
-          <input type="text" th:field="*{username}" class="form-control mb-2"
-                 placeholder="" id="userUsername"/>
+          <label for="userId" class="form-label">ID</label>
+          <input type="text" th:field="*{id}" class="form-control mb-2"
+                 placeholder="" id="userId" disabled/>
         </div>
       </div>
 
       <div class="row">
         <div class="col-8">
-          <label for="userPassword" class="form-label">Password</label>
-          <input type="text" th:field="*{password}" class="form-control mb-2"
-                 placeholder="" id="userPassword"/>
+          <label for="userUsername" class="form-label">Username</label>
+          <input type="text" th:field="*{username}" class="form-control mb-2"
+                 placeholder="" id="userUsername" disabled/>
         </div>
       </div>
 
@@ -52,7 +52,23 @@
         <div class="col-8">
           <label for="userFullName" class="form-label">Full Name</label>
           <input type="text" th:field="*{fullName}" class="form-control mb-2"
-                 placeholder="" id="userFullName"/>
+                 placeholder="" id="userFullName" disabled/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-8">
+          <label for="userEmail" class="form-label">E-mail</label>
+          <input type="text" th:field="*{email}" class="form-control mb-2"
+                 placeholder="" id="userEmail" disabled/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-8">
+          <label for="userPhoneNumber" class="form-label">Phone Number</label>
+          <input type="text" th:field="*{phoneNumber}" class="form-control mb-2"
+                 placeholder="" id="userPhoneNumber" disabled/>
         </div>
       </div>
 
@@ -61,35 +77,23 @@
           <label for="userAddress" class="form-label">Full address</label>
           <textarea th:field="*{address}" class="form-control w-100 mb-2" rows="4"
                     name="userAddress" form="userForm"
-                    placeholder="" id="userAddress"></textarea>
+                    placeholder="" id="userAddress" disabled></textarea>
         </div>
       </div>
 
       <div class="row">
         <div class="col-8">
-          <label for="userEmail" class="form-label">E-mail</label>
-          <input type="text" th:field="*{email}" class="form-control mb-2"
-                 placeholder="" id="userEmail"/>
+          <label for="userRole" class="form-label">Role</label>
+          <input type="text" th:field="*{role}" class="form-control mb-2"
+                 placeholder="" id="userRole" disabled/>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-8">
-          <label for="userPhoneNumber" class="form-label">Phone Number</label>
-          <input type="text" th:field="*{phoneNumber}" class="form-control mb-2"
-                 placeholder="" id="userPhoneNumber"/>
-        </div>
+      <div class="row px-2 mt-3">
+        <button type="submit" class="col-2 btn btn-primary">Back to Users</button>
       </div>
-
-      <div class="row px-3">
-        <button type="submit" class="col-2 btn btn-primary">Save</button>
-      </div>
-      <input type="hidden" th:field="*{id}" />
 
     </form>
-
-    <hr/>
-    <a th:href="@{/}">Back to Home</a>
 
   </div>
 </main>

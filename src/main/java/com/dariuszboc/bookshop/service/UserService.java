@@ -76,7 +76,7 @@ public class UserService {
         userDTO.setAddress(user.getAddress());
         userDTO.setEmail(user.getEmail());
         userDTO.setPhoneNumber(user.getPhoneNumber());
-        userDTO.setRole(userDTO.getRole());
+        userDTO.setRole(user.getRole());
         return userDTO;
     }
 
